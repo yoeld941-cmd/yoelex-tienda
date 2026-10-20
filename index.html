@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YOELEX TIENDA</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  color: #222;
+}
+header {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 25px 10px;
+}
+nav {
+  background: #222;
+  padding: 12px;
+  text-align: center;
+}
+nav a {
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+}
+main {
+  padding: 20px;
+  text-align: center;
+}
+.productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+.producto {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  width: 140px;
+  box-shadow: 0 2px 8px #ccc;
+}
+.producto img {
+  width: 100%;
+  border-radius: 8px;
+}
+button {
+  background: #087f5b;
+  color: white;
+  border: 0;
+  padding: 10px;
+  border-radius: 6px;
+}
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>👕 YOELEX TIENDA</h1>
+  <p>La ropa, tu mundo</p>
+</header>
+
+<nav>
+  <a href="#inicio">Inicio</a>
+  <a href="#productos">Productos</a>
+  <a href="#contacto">Contacto</a>
+</nav>
+
+<main id="inicio">
+  <h2>¡Bienvenido a nuestra tienda!</h2>
+  <p>Descubre ropa y accesorios para todos los gustos.</p>
+
+  <h2 id="productos">Nuestros productos</h2>
+
+  <div class="productos">
+
+    <div class="producto">
+      <div style="font-size:65px">👕</div>
+      <h3>Camiseta</h3>
+      <p>Precio: 15</p>
+      <button onclick="alert('Escríbenos para consultar disponibilidad')">
+        Consultar
+      </button>
+    </div>
+
+    <div class="producto">
+      <div style="font-size:65px">👟</div>
+      <h3>Zapatillas</h3>
+      <p>Precio: 30</p>
+      <button onclick="alert('Escríbenos para consultar disponibilidad')">
+        Consultar
+      </button>
+    </div>
+
+    <div class="producto">
+      <div style="font-size:65px">🎒</div>
+      <h3>Mochila</h3>
+      <p>Precio: 20</p>
+      <button onclick="alert('Escríbenos para consultar disponibilidad')">
+        Consultar
+      </button>
+    </div>
+
+  </div>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Pronto añadiremos nuestros datos de contacto.</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 YOELEX TIENDA</p>
+</footer>
+
+</body>
+</html>
