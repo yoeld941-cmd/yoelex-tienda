@@ -1,96 +1,390 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YOELEX | Tienda Online</title>
+<meta name="theme-color" content="#111111">
+<meta name="description" content="YOELEX: tienda online de moda, tecnología, zapatos y accesorios.">
+<title>YOELEX | Tu tienda online</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f5f5;color:#171717}
-header{background:#111;color:white;text-align:center;padding:24px 12px}
-header h1{margin:0;font-size:34px;letter-spacing:4px}
-header p{margin:8px 0 0;color:#ddd}
-nav{background:#222;padding:14px;text-align:center;position:sticky;top:0}
-nav a{color:white;text-decoration:none;margin:0 10px;font-size:14px}
-.hero{background:#111;color:white;text-align:center;padding:45px 18px}
-.hero h2{font-size:30px;margin:0 0 12px}
-.hero p{color:#ddd;line-height:1.5}
-.boton{display:inline-block;background:white;color:#111;padding:12px 20px;border-radius:5px;text-decoration:none;font-weight:bold;margin-top:10px}
-h2.titulo{text-align:center;margin:32px 0 20px}
-.categorias{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;padding:0 12px}
-.categorias a{background:#222;color:white;text-decoration:none;padding:11px 16px;border-radius:5px}
-.productos{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:15px;padding:15px;max-width:1000px;margin:auto}
-.producto{background:white;border:1px solid #ddd;border-radius:9px;overflow:hidden;text-align:center;padding-bottom:16px}
-.producto img{width:100%;height:165px;object-fit:cover;background:#eee}
-.producto h3{font-size:16px;margin:12px 5px}
-.producto p{color:#555;font-size:13px;padding:0 8px}
-.precio{font-size:19px;font-weight:bold;margin:12px}
-.pedir{display:inline-block;background:#111;color:white;padding:11px 13px;border-radius:5px;text-decoration:none;font-size:13px}
-.info{background:white;margin:25px 15px;padding:22px;border-radius:8px;text-align:center;line-height:1.7}
-footer{background:#111;color:white;text-align:center;padding:24px;font-size:13px}
+:root {
+  --negro: #111;
+  --blanco: #fff;
+  --gris: #f4f4f4;
+  --texto: #555;
+  --borde: #e5e5e5;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--negro);
+  background: var(--blanco);
+}
+a { color: inherit; text-decoration: none; }
+button, input { font: inherit; }
+
+.aviso {
+  background: var(--negro);
+  color: white;
+  text-align: center;
+  padding: 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+header {
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  border-bottom: 1px solid var(--borde);
+}
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+.logo span { font-weight: 400; }
+.sublogo {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--texto);
+  margin-top: 4px;
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+nav a:hover { text-decoration: underline; }
+
+.portada {
+  margin: 20px auto;
+  width: 94%;
+  min-height: 340px;
+  background: #111;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 45px 7%;
+  position: relative;
+  overflow: hidden;
+}
+.portada::after {
+  content: "Y";
+  position: absolute;
+  right: 5%;
+  top: -85px;
+  font-size: 390px;
+  font-weight: 900;
+  color: #202020;
+  line-height: 1;
+}
+.portada-contenido { position: relative; z-index: 1; max-width: 480px; }
+.etiqueta {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+.portada h1 {
+  font-size: clamp(36px, 7vw, 65px);
+  line-height: 1;
+  margin: 20px 0;
+}
+.portada p { color: #ddd; line-height: 1.7; }
+.boton {
+  display: inline-block;
+  border: 1px solid var(--negro);
+  padding: 13px 20px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+.boton-blanco { background: white; color: black; border-color: white; }
+.boton-negro { background: black; color: white; }
+.boton:hover { opacity: .8; }
+
+.beneficios {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding: 18px 5%;
+  text-align: center;
+  border-bottom: 1px solid var(--borde);
+}
+.beneficios strong { display: block; font-size: 12px; margin-bottom: 6px; }
+.beneficios span { font-size: 11px; color: var(--texto); }
+
+.seccion { padding: 45px 5%; }
+.titulo-seccion { text-align: center; margin-bottom: 25px; }
+.titulo-seccion h2 { font-size: 27px; margin: 0 0 10px; }
+.titulo-seccion p { color: var(--texto); font-size: 13px; }
+
+.categorias {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+.categoria {
+  min-height: 100px;
+  background: var(--gris);
+  padding: 25px 10px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: bold;
+  border: 1px solid var(--borde);
+  cursor: pointer;
+}
+.categoria:hover { background: var(--negro); color: white; }
+
+.barra-productos {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+#buscador {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #ccc;
+  padding: 13px;
+}
+#filtro {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: white;
+  max-width: 45%;
+}
+.productos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.producto {
+  border: 1px solid var(--borde);
+  padding-bottom: 16px;
+  min-width: 0;
+}
+.producto img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+  background: var(--gris);
+}
+.producto-info { padding: 13px; }
+.producto-categoria {
+  font-size: 10px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.producto h3 { font-size: 15px; margin: 9px 0; }
+.producto p { color: var(--texto); font-size: 12px; line-height: 1.5; }
+.precio { font-weight: bold; font-size: 14px; margin: 12px 0; }
+.producto .boton { width: 100%; padding: 11px 5px; }
+
+.sin-resultados {
+  display: none;
+  text-align: center;
+  padding: 25px;
+  color: var(--texto);
+}
+
+.frase {
+  background: var(--gris);
+  padding: 40px 7%;
+  text-align: center;
+}
+.frase h2 { font-size: 26px; }
+.frase p { color: var(--texto); line-height: 1.7; }
+
+.contacto {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 42px 7%;
+}
+.contacto p { color: #ddd; line-height: 1.7; font-size: 14px; }
+footer {
+  background: #080808;
+  color: #aaa;
+  text-align: center;
+  padding: 20px;
+  font-size: 11px;
+}
+
+@media (max-width: 700px) {
+  header { flex-direction: column; text-align: center; }
+  nav { justify-content: center; gap: 13px; }
+  .portada { min-height: 300px; padding: 35px 7%; }
+  .portada::after { right: -30px; font-size: 280px; top: -15px; }
+  .beneficios { grid-template-columns: 1fr; gap: 18px; }
+  .categorias { grid-template-columns: repeat(2, 1fr); }
+  .productos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .seccion { padding: 32px 4%; }
+  .producto-info { padding: 10px; }
+  .producto h3 { font-size: 13px; }
+  .barra-productos { flex-direction: column; }
+  #filtro { max-width: 100%; }
+}
 </style>
 </head>
+
 <body>
-<header>
-<h1>YOELEX</h1>
-<p>Tu mundo, tu estilo.</p>
+<div class="aviso">YOELEX · DESCUBRE TU PRÓXIMO FAVORITO</div>
+
+<header id="inicio">
+  <div>
+    <a href="#inicio" class="logo">YOELEX<span>.</span></a>
+    <div class="sublogo">TU MUNDO, TU ESTILO</div>
+  </div>
+  <nav>
+    <a href="#inicio">INICIO</a>
+    <a href="#categorias">CATEGORÍAS</a>
+    <a href="#productos">PRODUCTOS</a>
+    <a href="#contacto">PEDIDOS</a>
+  </nav>
 </header>
-<nav>
-<a href="#inicio">Inicio</a>
-<a href="#categorias">Categorías</a>
-<a href="#productos">Productos</a>
-<a href="#contacto">Pedidos</a>
-</nav>
-<section class="hero" id="inicio">
-<h2>¡Bienvenido a YOELEX!</h2>
-<p>Descubre zapatos, ropa, tecnología y accesorios en un solo lugar.</p>
-<a class="boton" href="#productos">VER PRODUCTOS</a>
+
+<main>
+<section class="portada">
+  <div class="portada-contenido">
+    <div class="etiqueta">ESTILO · TECNOLOGÍA · NOVEDADES</div>
+    <h1>Lo que buscas.<br>Está aquí.</h1>
+    <p>Descubre productos para tu estilo y tu día a día. Explora el catálogo de YOELEX.</p>
+    <a class="boton boton-blanco" href="#productos">EXPLORAR PRODUCTOS →</a>
+  </div>
 </section>
-<h2 class="titulo" id="categorias">Explora las categorías</h2>
-<div class="categorias">
-<a href="#zapatos">👟 Zapatos</a>
-<a href="#ropa">👕 Ropa</a>
-<a href="#tecnologia">📱 Tecnología</a>
-<a href="#accesorios">🎒 Accesorios</a>
+
+<div class="beneficios">
+  <div><strong>✦ VARIEDAD</strong><span>Productos para diferentes gustos</span></div>
+  <div><strong>✦ ATENCIÓN</strong><span>Consulta antes de encargar</span></div>
+  <div><strong>✦ NOVEDADES</strong><span>Descubre nuevos artículos</span></div>
 </div>
-<h2 class="titulo" id="productos">Productos destacados</h2>
-<div class="productos">
-<article class="producto" id="zapatos">
-<img src="https://placehold.co/400x300/f0f0f0/222?text=Zapatos" alt="Imagen de zapatos">
-<h3>Zapatos deportivos</h3>
-<p>Estilo cómodo para cada día.</p>
-<div class="precio">Consultar precio</div>
-<a class="pedir" href="#contacto">Consultar</a>
-</article>
-<article class="producto" id="ropa">
-<img src="https://placehold.co/400x300/f0f0f0/222?text=Camiseta" alt="Imagen de camiseta">
-<h3>Camisetas modernas</h3>
-<p>Diseños para tu estilo.</p>
-<div class="precio">Consultar precio</div>
-<a class="pedir" href="#contacto">Consultar</a>
-</article>
-<article class="producto" id="tecnologia">
-<img src="https://placehold.co/400x300/f0f0f0/222?text=Auriculares" alt="Imagen de auriculares">
-<h3>Auriculares</h3>
-<p>Accesorios para escuchar música.</p>
-<div class="precio">Consultar precio</div>
-<a class="pedir" href="#contacto">Consultar</a>
-</article>
-<article class="producto" id="accesorios">
-<img src="https://placehold.co/400x300/f0f0f0/222?text=Bolso" alt="Imagen de bolso">
-<h3>Bolsos y accesorios</h3>
-<p>Complementos para tu día.</p>
-<div class="precio">Consultar precio</div>
-<a class="pedir" href="#contacto">Consultar</a>
-</article>
-</div>
-<section class="info" id="contacto">
-<h2>¿Te interesa un producto?</h2>
-<p>Contacta con nosotros para consultar disponibilidad, precio y opciones de entrega.</p>
-<p><strong>YOELEX</strong> · Tu mundo, tu estilo.</p>
+
+<section class="seccion" id="categorias">
+  <div class="titulo-seccion">
+    <h2>COMPRA POR CATEGORÍA</h2>
+    <p>Encuentra lo que te gusta más rápido.</p>
+  </div>
+  <div class="categorias">
+    <button class="categoria" onclick="elegirCategoria('Zapatos')">👟<br><br>ZAPATOS</button>
+    <button class="categoria" onclick="elegirCategoria('Ropa')">👕<br><br>ROPA</button>
+    <button class="categoria" onclick="elegirCategoria('Tecnología')">🎧<br><br>TECNOLOGÍA</button>
+    <button class="categoria" onclick="elegirCategoria('Accesorios')">👜<br><br>ACCESORIOS</button>
+  </div>
 </section>
-<footer>
-<p>© 2026 YOELEX TIENDA</p>
-<p>Los productos y precios se actualizarán próximamente.</p>
-</footer>
+
+<section class="seccion" id="productos">
+  <div class="titulo-seccion">
+    <h2>DESCUBRE EL CATÁLOGO</h2>
+    <p>Consulta la disponibilidad y el precio antes de hacer tu pedido.</p>
+  </div>
+
+  <div class="barra-productos">
+    <input id="buscador" type="search" placeholder="Buscar zapatos, ropa, auriculares..." oninput="filtrarProductos()">
+    <select id="filtro" onchange="filtrarProductos()" aria-label="Filtrar por categoría">
+      <option value="Todos">Todas las categorías</option>
+      <option value="Zapatos">Zapatos</option>
+      <option value="Ropa">Ropa</option>
+      <option value="Tecnología">Tecnología</option>
+      <option value="Accesorios">Accesorios</option>
+    </select>
+  </div>
+
+  <div class="productos" id="lista-productos">
+    <article class="producto" data-categoria="Zapatos">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80" alt="Zapatos deportivos rojos" loading="lazy">
+      <div class="producto-info">
+        <div class="producto-categoria">Zapatos</div>
+        <h3>Zapatillas deportivas</h3>
+        <p>Un estilo casual para el día a día.</p>
+        <div class="precio">Consultar precio</div>
+        <a class="boton boton-negro" href="#contacto">CONSULTAR PRODUCTO</a>
+      </div>
+    </article>
+
+    <article class="producto" data-categoria="Ropa">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80" alt="Camiseta blanca" loading="lazy">
+      <div class="producto-info">
+        <div class="producto-categoria">Ropa</div>
+        <h3>Camiseta básica</h3>
+        <p>Una prenda sencilla y versátil.</p>
+        <div class="precio">Consultar precio</div>
+        <a class="boton boton-negro" href="#contacto">CONSULTAR PRODUCTO</a>
+      </div>
+    </article>
+
+    <article class="producto" data-categoria="Tecnología">
+      <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80" alt="Auriculares modernos" loading="lazy">
+      <div class="producto-info">
+        <div class="producto-categoria">Tecnología</div>
+        <h3>Auriculares</h3>
+        <p>Un accesorio para escuchar tu música.</p>
+        <div class="precio">Consultar precio</div>
+        <a class="boton boton-negro" href="#contacto">CONSULTAR PRODUCTO</a>
+      </div>
+    </article>
+
+    <article class="producto" data-categoria="Accesorios">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=600&q=80" alt="Bolso moderno" loading="lazy">
+      <div class="producto-info">
+        <div class="producto-categoria">Accesorios</div>
+        <h3>Bolso moderno</h3>
+        <p>Un complemento para diferentes ocasiones.</p>
+        <div class="precio">Consultar precio</div>
+        <a class="boton boton-negro" href="#contacto">CONSULTAR PRODUCTO</a>
+      </div>
+    </article>
+  </div>
+  <div class="sin-resultados" id="sin-resultados">No encontramos productos con esa búsqueda.</div>
+</section>
+
+<section class="frase">
+  <h2>Tu estilo empieza aquí.</h2>
+  <p>Estamos preparando nuestro catálogo. Consulta qué productos están disponibles y sus precios antes de encargar.</p>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="etiqueta">¿TE INTERESA ALGÚN PRODUCTO?</div>
+  <h2>HABLEMOS DE TU PEDIDO</h2>
+  <p>Elige un producto del catálogo y consulta su precio, disponibilidad y opciones de entrega.</p>
+  <p><strong>Contacto de la tienda:</strong> próximamente.</p>
+  <p>Los botones de consulta aún no envían mensajes automáticamente. Hay que configurar un medio de contacto real.</p>
+</section>
+</main>
+
+<footer>© 2026 YOELEX · TU MUNDO, TU ESTILO</footer>
+
+<script>
+function elegirCategoria(categoria) {
+  document.getElementById('filtro').value = categoria;
+  document.getElementById('productos').scrollIntoView({behavior:'smooth'});
+  filtrarProductos();
+}
+
+function filtrarProductos() {
+  const texto = document.getElementById('buscador').value.toLowerCase().trim();
+  const categoria = document.getElementById('filtro').value;
+  const productos = document.querySelectorAll('.producto');
+  let visibles = 0;
+
+  productos.forEach(producto => {
+    const coincideTexto = producto.innerText.toLowerCase().includes(texto);
+    const coincideCategoria = categoria === 'Todos' || producto.dataset.categoria === categoria;
+    const mostrar = coincideTexto && coincideCategoria;
+    producto.style.display = mostrar ? '' : 'none';
+    if (mostrar) visibles++;
+  });
+
+  document.getElementById('sin-resultados').style.display = visibles ? 'none' : 'block';
+}
+</script>
 </body>
 </html>
